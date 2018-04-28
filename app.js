@@ -24,11 +24,11 @@ app.on('ready', function(){
           mainWindow = null
       })
 
-      mainWindow.webContents.openDevTools()
+      // mainWindow.webContents.openDevTools()
 
       var infoWindow = new BrowserWindow({
-          width:500,
-          height:500,
+          width:800,
+          height:800,
           icon: 'ressources/img/icon.png',
           show: false,
       })
@@ -41,12 +41,13 @@ app.on('ready', function(){
 
       infoWindow.on('close', function(event){
         infoWindow.hide()
-        event.defaultPrevented()
+        event.preventDefault()
     })
 
-    infoWindow.webContents.openDevTools()
+    //infoWindow.webContents.openDevTools()
 
-    ipcMain.on('show_detail', function(id){
+    ipcMain.on('show_detail', (event, arg)=>{
+        infoWindow.webContents.send("show_more", arg)
         infoWindow.show()
     })
 })

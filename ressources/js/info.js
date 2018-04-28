@@ -16,6 +16,6 @@ function init(){
 
 function getInfo(){
     element = this;
-    id = element.getElementsByClassName("id");
+    id = element.getElementsByClassName("id")[0].value;
     ipcRenderer.send('show_detail', id)
 }
