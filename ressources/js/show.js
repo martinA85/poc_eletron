@@ -1,5 +1,7 @@
+//On charge IpcRenderer pour comuniquer avec le script principal "app.js"
 const {ipcRenderer}= require('electron');
 
+//Code executer sur le signal "show_more"
 ipcRenderer.on('show_more', (event, arg)=>{
     getDetail(arg)
 })
